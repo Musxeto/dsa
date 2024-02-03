@@ -14,10 +14,10 @@ public:
     }
 
     bool isFull() {
-        return rear == size - 1;
+        return (rear + 1) % size == front;
     }
 
-    int count() {
+    int getSize() {
         return rear - front + 1;
     }
 
@@ -30,7 +30,7 @@ public:
             front = rear = 0;
         }
         else {
-            rear++;
+            rear = (rear + 1) % size;
         }
         array[rear] = val;
         cout << val << " entered at rear!" << endl;
@@ -47,19 +47,82 @@ public:
                 front = rear = -1;
             }
             else {
-                front++;
+                front = (front + 1) % size;
             }
         }
+    }
+
+    void display() {
+        if (isEmpty()) {
+            cout << "Queue is empty." << endl;
+            return;
+        }
+        cout << "Queue elements: ";
+        for (int i = front; i != (rear + 1) % size; i = (i + 1) % size) {
+            cout << array[i] << " ";
+        }
+        cout << endl;
     }
 };
 
 int main() {
-    Queue q;
-    q.enqueue(10);
-    q.enqueue(20);
-    q.enqueue(30);
-    q.dequeue();
-    q.enqueue(40);
+    Queue niceYar;
+    int choice, element;
+
+    do {
+        system("CLS");
+
+        cout << "\nMain Menu:" << endl;
+        cout << "1. Enqueue" << endl;
+        cout << "2. Dequeue" << endl;
+        cout << "3. Check For Empty" << endl;
+        cout << "4. Check For Full" << endl;
+        cout << "5. Display Queue" << endl;
+        cout << "0. Exit" << endl;
+
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+        case 1:
+            cout << "Enter the element to insert: ";
+            cin >> element;
+            niceYar.enqueue(element);
+            cout << "Element inserted at the front." << endl;
+            system("PAUSE");
+            break;
+
+        case 2:
+            niceYar.dequeue();
+            cout << "Element dequeued from the front." << endl;
+            system("PAUSE");
+            break;
+
+        case 3:
+            cout << (niceYar.isEmpty() ? "Queue is Empty!" : "Queue is not Empty!") << endl;
+            system("PAUSE");
+            break;
+
+        case 4:
+            cout << (niceYar.isFull() ? "Queue is Full!" : "Queue is not Full!") << endl;
+            system("PAUSE");
+            break;
+
+        case 5:
+            niceYar.display();
+            system("PAUSE");
+            break;
+
+        case 0:
+            cout << "Exiting the program." << endl;
+            system("PAUSE");
+            break;
+
+        default:
+            cout << "Invalid choice. Please enter a valid option." << endl;
+            system("PAUSE");
+        }
+    } while (choice != 0);
 
     return 0;
 }
