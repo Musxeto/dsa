@@ -1,6 +1,6 @@
 # Data Structures and Algorithms Programs
 
-This repository contains my implementations of various Data Structures and Algorithms (DSA) assignments during my 3rd Semesterat LGU. The programs are written in C++, and each directory corresponds to a specific topic or assignment.
+This repository contains my implementations of various Data Structures and Algorithms (DSA) assignments during my 3rd Semester at LGU. The programs are written in C++, and each directory corresponds to a specific topic or assignment.
 
 ## Table of Contents
 
