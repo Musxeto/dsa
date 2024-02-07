@@ -33,7 +33,7 @@ To use the programs in this repository, follow these general steps:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/dsa-programs.git
+   git clone https://github.com/Musxeto/dsa.git
 # Conclusion:
 Keep in mind that the code is provided as-is, and it's recommended to understand the logic behind each implementation before using them in your projects or assignments.
 
