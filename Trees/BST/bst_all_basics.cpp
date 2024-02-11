@@ -236,6 +236,15 @@ public:
         deleteTree(root->right);
         delete root;
     }
+
+    int countNodes(TreeNode* root) {
+        if (root == NULL) {
+            return 0;
+        } else {
+            return 1 + countNodes(root->left) + countNodes(root->right);
+        }
+    }
+
 };
 
 int main() {
