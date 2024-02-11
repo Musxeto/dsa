@@ -4,8 +4,8 @@ using namespace std;
 
 class MaxHeap {
 private:
-    int* heap;
-    int capacity;
+    static const int MAX_SIZE = 100;
+    int heap[MAX_SIZE];
     int size;
 
     int parent(int i) {
@@ -53,15 +53,11 @@ private:
     }
 
 public:
-    MaxHeap(int capacity) {
-        this->capacity = capacity;
-        this->size = 0;
-        this->heap = new int[capacity];
-    }
+    MaxHeap() : size(0) {}
 
     int getMax() {
         if (size == 0) {
-            cout << "Heap is empty. Cannot get maximum element.\n";
+            cout << "Heap is empty. Cannot get the maximum element.\n";
             return -1; // Assuming -1 as a sentinel value for an empty heap
         }
         return heap[0];
@@ -69,7 +65,7 @@ public:
 
     int extractMax() {
         if (size == 0) {
-            cout << "Heap is empty. Cannot extract maximum element.\n";
+            cout << "Heap is empty. Cannot extract the maximum element.\n";
             return -1; // Assuming -1 as a sentinel value for an empty heap
         }
 
@@ -83,7 +79,7 @@ public:
     }
 
     void insertKey(int key) {
-        if (size == capacity) {
+        if (size == MAX_SIZE) {
             cout << "Heap is full. Cannot insert more elements.\n";
             return;
         }
@@ -119,14 +115,10 @@ public:
         }
         cout << endl;
     }
-
-    ~MaxHeap() {
-        delete[] heap;
-    }
 };
 
 int main() {
-    MaxHeap maxHeap(10);
+    MaxHeap maxHeap;
 
     int choice, key, index, newKey;
 
@@ -181,4 +173,3 @@ int main() {
 
     return 0;
 }
-
